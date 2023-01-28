@@ -1,4 +1,0 @@
----
-- set_fact: httpd
-- name: install httpd
-  action: yum name=httpd state=present
