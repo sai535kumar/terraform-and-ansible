@@ -1,0 +1,19 @@
+---
+- hosts: Dev
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - include: one.yml
+    - name: restart httpd
+      service: name=httpd state=restarted
+
+    - name: install git
+      action: yum name=git state=present
+
+    - name: getting code from git hub
+      git:
+        repo: https://github.com/sai535kumar/paytm.git
+        dest: "/var/www/html/"
+        version: "master"
